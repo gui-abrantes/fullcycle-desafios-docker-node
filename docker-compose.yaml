@@ -17,7 +17,7 @@ services:
   app:
     build:
       context: app
-    command: dockerize -wait tcp://db:3306 -timeout 20 docker-entrypoint.sh
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 20s docker-entrypoint.sh
     command: npm start
     container_name: app
     networks:
