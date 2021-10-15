@@ -1,12 +1,10 @@
-FROM node:14.18-alpine
+FROM node:alpine
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+COPY . .
 
 RUN npm install
-
-COPY . .
 
 RUN apk add --no-cache openssl
 
@@ -15,4 +13,3 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
-EXPOSE 3000
